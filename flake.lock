@@ -1,0 +1,45 @@
+{
+  "nodes": {
+    "edk2-porting-linux-next-x1e": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719308596,
+        "narHash": "sha256-W0F705UZZuCIRqJj6EQtEBYNp4dFi9AYqm8szdrtvC8=",
+        "owner": "edk2-porting",
+        "repo": "linux-next",
+        "rev": "4f541839d6d8a73d68f776c2f40f0fa13473c782",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edk2-porting",
+        "ref": "work/sakuramist-x1e80100",
+        "repo": "linux-next",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1719530430,
+        "narHash": "sha256-w6jtdgbrDCNMcy6tejJHtsnBnOw4fINvfrpTJaRC+ps=",
+        "owner": "colemickens",
+        "repo": "nixpkgs",
+        "rev": "04becfd6c4c1cbd0bbc76a0533a08a42646aca9f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "colemickens",
+        "ref": "cmpkgs",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "edk2-porting-linux-next-x1e": "edk2-porting-linux-next-x1e",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

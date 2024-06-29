@@ -9,12 +9,12 @@
       }
     );
 
-    # TODO: see if upstream is going to add better matching strings,
-    # otherwise this repo/iso/config is hard-wired to the Yoga 7x.
+    # # TODO: see if upstream is going to add better matching strings,
+    # # otherwise this repo/iso/config is hard-wired to the Yoga 7x.
     hardware.deviceTree = {
       # only used for extlinux boot
       enable = true;
-      name = "x1e80100-yoga.dtb";
+      name = "qcom/x1e80100-yoga.dtb";
     };
 
     # TODO: no idea if this will work, this is also WRONG, it applies latest generation DTB to all generations, but whatever for now

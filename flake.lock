@@ -1,29 +1,30 @@
 {
   "nodes": {
-    "edk2-porting-linux-next-x1e": {
+    "linux-qcom-for-next": {
       "flake": false,
       "locked": {
-        "lastModified": 1719308596,
-        "narHash": "sha256-W0F705UZZuCIRqJj6EQtEBYNp4dFi9AYqm8szdrtvC8=",
-        "owner": "edk2-porting",
-        "repo": "linux-next",
-        "rev": "4f541839d6d8a73d68f776c2f40f0fa13473c782",
-        "type": "github"
+        "lastModified": 1720086798,
+        "narHash": "sha256-FvvNWgYO0HG77UpvRPbMCOImwprOtIhJJwDRTZvTjEc=",
+        "ref": "x1e80100-next",
+        "rev": "531f51b00e5fe75ae7d3e2e048563a2f9c9a6062",
+        "shallow": true,
+        "type": "git",
+        "url": "https://git.codelinaro.org/abel.vesa/linux.git"
       },
       "original": {
-        "owner": "edk2-porting",
-        "ref": "work/sakuramist-x1e80100",
-        "repo": "linux-next",
-        "type": "github"
+        "ref": "x1e80100-next",
+        "shallow": true,
+        "type": "git",
+        "url": "https://git.codelinaro.org/abel.vesa/linux.git"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1720230729,
-        "narHash": "sha256-uGbxjQkymYP34duBXC2mTGaVkL6sUojZlA09TYGKZ8A=",
+        "lastModified": 1720480628,
+        "narHash": "sha256-U14DbI9fBa9YeBIXVO0ce5OncGhfEam9RO3KqTLR+Ew=",
         "owner": "colemickens",
         "repo": "nixpkgs",
-        "rev": "ec62820fba0e754a2a86f8f399596663b0e91e84",
+        "rev": "f3ee6669dd17a14d8296aed0c009dc1440d6f49c",
         "type": "github"
       },
       "original": {
@@ -35,7 +36,7 @@
     },
     "root": {
       "inputs": {
-        "edk2-porting-linux-next-x1e": "edk2-porting-linux-next-x1e",
+        "linux-qcom-for-next": "linux-qcom-for-next",
         "nixpkgs": "nixpkgs"
       }
     }

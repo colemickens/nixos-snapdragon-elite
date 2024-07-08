@@ -3,7 +3,7 @@
   fetchFromGitHub,
   buildLinux,
   fetchpatch,
-  edk2_kernel_src,
+  kernel_src,
   ...
 }@args:
 
@@ -16,7 +16,7 @@ buildLinux (
     version = "${modDirVersion}";
     inherit modDirVersion;
 
-    src = edk2_kernel_src;
+    src = kernel_src;
 
     defconfig = "x1e80100_defconfig";
 

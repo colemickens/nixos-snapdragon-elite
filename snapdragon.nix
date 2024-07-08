@@ -5,7 +5,7 @@
   config = {
     boot.kernelPackages = pkgs.linuxKernel.packagesFor (
       pkgs.callPackage ./snapdragon-kernel.nix {
-        edk2_kernel_src = inputs.edk2-porting-linux-next-x1e;
+        kernel_src = inputs.linux-qcom-for-next;
       }
     );
 
@@ -14,11 +14,8 @@
     hardware.deviceTree = {
       # only used for extlinux boot
       enable = true;
-      name = "qcom/x1e80100-yoga.dtb";
+      name = "qcom/x1e80100-lenovo-yoga-slim7x.dts";
     };
-
-    # TODO: no idea if this will work, this is also WRONG, it applies latest generation DTB to all generations, but whatever for now
-    boot.loader.grub.extraPerEntryConfig = "devicetree ${config.boot.kernelPackages.kernel}/dtbs/qcom/x1e80100-yoga.dtb";
 
     # disable zfs for aarch64
     boot.supportedFilesystems = lib.mkForce [ "btrfs" "cifs" "f2fs" "jfs" "ntfs" "reiserfs" "vfat" "xfs" ];

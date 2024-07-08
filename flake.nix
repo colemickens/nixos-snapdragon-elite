@@ -4,8 +4,10 @@
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs.url = "github:colemickens/nixpkgs?ref=cmpkgs";
-    edk2-porting-linux-next-x1e = {
-      url = "github:edk2-porting/linux-next?ref=work/sakuramist-x1e80100";
+    linux-qcom-for-next = {
+      # url = "github:edk2-porting/linux-next?ref=work/sakuramist-x1e80100";
+      # url = "git+https://git.kernel.org/pub/scm/linux/kernel/git/qcom/linux.git?ref=for-next&shallow=1";
+      url = "git+https://git.codelinaro.org/abel.vesa/linux.git?ref=x1e80100-next&shallow=1";
       flake = false;
     };
   };

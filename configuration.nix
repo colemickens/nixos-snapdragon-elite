@@ -8,7 +8,7 @@
   config = {
     boot.kernelPackages = pkgs.linuxKernel.packagesFor (
       pkgs.callPackage ./snapdragon-kernel.nix {
-        edk2_kernel_src = inputs.edk2-porting-linux-next-x1e;
+        kernel_src = inputs.linux-qcom-for-next;
       }
     );
 

@@ -14,10 +14,17 @@
 
   outputs = inputs: rec {
     nixosConfigurations = {
-      installer-sdx = inputs.nixpkgs.lib.nixosSystem {
+      iso = inputs.nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
           ./configuration-iso.nix
+        ];
+        specialArgs = { inherit inputs; };
+      };
+      image = inputs.nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ./configuration-image.nix
         ];
         specialArgs = { inherit inputs; };
       };
@@ -27,18 +34,22 @@
       default = import ./snapdragon.nix { inherit inputs; };
     };
 
-    apps = {
-      test-vm =
-        let
-          installer = nixosConfigurations.installer-sdx.config.system.build;
-          installerIso = "${installer.isoImage}/iso/${installer.isoImage.isoName}";
-          pkgs_ = import inputs.nixpkgs { system = "aarch64-linux"; };
-        in
-        {
+    apps =
+      let
+        installerIso = nixosConfigurations.iso.config.system.build;
+        installerIsoIso = "${installerIso.isoImage}/iso/${installer.isoImage.isoName}";
+
+        installerImage = nixosConfigurations.image.config.system.build;
+        installerImageImage = "${installer.sdImage}/sdcard/${installer.isoImage.isoName}";
+
+        pkgs_ = import inputs.nixpkgs { system = "aarch64-linux"; };
+      in
+      {
+        test-iso = {
           type = "app";
           program =
-            (pkgs_.writeShellScript "test-vm" ''
-              ${pkgs_.qemu}/bin/qemu-img create -f qcow2 /tmp/installer-vm-vdisk1 10G
+            (pkgs_.writeShellScript "test-iso" ''
+              ${pkgs_.qemu}/bin/qemu-img create -f qcow2 /tmp/installer-vm-vdisk1-iso 10G
               ${pkgs_.qemu}/bin/qemu-system-aarch64 -enable-kvm -nographic -m 2048 -boot d \
                 -machine virt,gic-version=max \
                 -cpu max \
@@ -48,7 +59,21 @@
                 -net user,hostfwd=tcp::10022-:22 -net nic
             '').outPath;
         };
-    };
+        test-image = {
+          type = "app";
+          program =
+            (pkgs_.writeShellScript "test-image" ''
+              ${pkgs_.qemu}/bin/qemu-img create -f qcow2 /tmp/installer-vm-vdisk1-image 10G
+              ${pkgs_.qemu}/bin/qemu-system-aarch64 -enable-kvm -nographic -m 2048 -boot d \
+                -machine virt,gic-version=max \
+                -cpu max \
+                -smp 4 \
+                -bios "${pkgs_.OVMF.fd}/FV/QEMU_EFI.fd" \
+                -hd "${installerImage}" -hda /tmp/installer-vm-vdisk1 \
+                -net user,hostfwd=tcp::10022-:22 -net nic
+            '').outPath;
+        };
+      };
 
     packages.aarch64-linux = {
       iso = nixosConfigurations.sdx-installer.config.system.build.isoImage;

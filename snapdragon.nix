@@ -14,7 +14,7 @@
     hardware.deviceTree = {
       # only used for extlinux boot
       enable = true;
-      name = "qcom/x1e80100-lenovo-yoga-slim7x.dts";
+      name = "qcom/x1e80100-lenovo-yoga-slim7x.dtb";
     };
 
     # disable zfs for aarch64

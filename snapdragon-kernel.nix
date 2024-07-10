@@ -8,7 +8,8 @@
 }@args:
 
 let
-  modDirVersion = "6.10.0-rc3-next-20240613";
+  # modDirVersion = "6.10.0-rc3-next-20240613";
+  modDirVersion = "6.10.0-rc6-next-20240703";
 in
 buildLinux (
   args
@@ -18,7 +19,8 @@ buildLinux (
 
     src = kernel_src;
 
-    defconfig = "x1e80100_defconfig";
+    # defconfig = "x1e80100_defconfig";
+    defconfig = "x1e_defconfig";
 
     kernelPatches =
       [

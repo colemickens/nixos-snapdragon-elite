@@ -10,5 +10,8 @@ dir="/home/colemickens"
 rsync -avh --delete ~/code/nixos-snapdragon-elite \
   $host:$dir
 
+rsync -avh --delete ~/code/nixpkgs \
+  $host:$dir
+  
 rsync -avh --delete ~/code/nixcfg \
   $host:$dir

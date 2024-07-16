@@ -12,6 +12,14 @@
       }
     );
 
+    boot.kernelParams = [
+      "clk_ignore_unused"
+      "pd_ignore_unused"
+      "efi=novamap"
+      # supposedly not needed, remove:
+      # "arm64.nopauth"
+    ];
+
     # # TODO: see if upstream is going to add better matching strings,
     # # otherwise this repo/iso/config is hard-wired to the Yoga 7x.
     hardware.deviceTree = {
@@ -32,7 +40,5 @@
         })
       ];
     };
-
-    # TODO: firmware?
   };
 }

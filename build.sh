@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 
-isodrv=".#packages.aarch64-linux.iso"
+set -x
+set -euo pipefail
 
-nix run github:Mic92/nix-fast-build -- --no-nom --flake $isodrv \
-  | cachix push sdx 
+nix build -L --keep-going \
+  .#nixosConfigurations.image.config.system.build.toplevel \
+  --out-link ~/result-image-toplevel \
+  --print-out-paths \
+  ${@} \
+  | cachix push colemickens
 
-# TODO: god damnit nix-fast-build
-result=$(nix eval --raw $isodrv)
-sed -i "s|export SDX_RESULT=.*|export SDX_RESULT=$result|g" README.md
+nix build -L --keep-going \
+  --print-out-paths \
+  .#nixosConfigurations.image.config.system.build.bootstrap-image \
+  --out-link ~/result-image-image \
+  ${@}

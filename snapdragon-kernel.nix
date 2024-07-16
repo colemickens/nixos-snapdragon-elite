@@ -9,7 +9,7 @@
 
 let
   # modDirVersion = "6.10.0-rc3-next-20240613";
-  modDirVersion = "6.10.0-rc7-next-20240709";
+  modDirVersion = "6.10.0-next-20240725";
 in
 buildLinux (
   args

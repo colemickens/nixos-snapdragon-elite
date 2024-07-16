@@ -19,10 +19,10 @@
     "linux-qcom-for-next": {
       "flake": false,
       "locked": {
-        "lastModified": 1720604730,
-        "narHash": "sha256-8lUq1E2VELDzm8XNwQAcAX+js1Fg4QYZ+5oHzAi7CJU=",
+        "lastModified": 1721928281,
+        "narHash": "sha256-0DFmPJEFl+cQT3Li4vuptBwavRc9CQOatd8TIYht+54=",
         "ref": "x1e80100-next",
-        "rev": "f85fa14852a17943ffa1623682030c11ea8a099b",
+        "rev": "193c13360708092fe535ead8fb58529445c269c1",
         "shallow": true,
         "type": "git",
         "url": "https://git.codelinaro.org/abel.vesa/linux.git"
@@ -36,11 +36,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1721085214,
-        "narHash": "sha256-1uSL8Vo7iAjNsImEQG3SXX+v7+PMChf/iooQa1qYmKw=",
+        "lastModified": 1722369412,
+        "narHash": "sha256-+FygzLw8Cfo/F4zRMOmB1o8o38Qc0bt1AK9egLvFOWY=",
         "owner": "colemickens",
         "repo": "nixpkgs",
-        "rev": "23ecc5b101d25f128ca0261bad9a32adeeebf880",
+        "rev": "b3ef19199109eee89304741ebab84c0d9a62d9ca",
         "type": "github"
       },
       "original": {

@@ -24,6 +24,7 @@ in
   config = {
     hardware.firmware = [
       fwpkg
+      pkgs.linux-firmware
     ];
   };
 }

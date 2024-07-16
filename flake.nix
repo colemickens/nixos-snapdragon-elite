@@ -10,6 +10,10 @@
       url = "git+https://git.codelinaro.org/abel.vesa/linux.git?ref=x1e80100-next&shallow=1";
       flake = false;
     };
+    firmware = {
+      url = "github:Seraphin-/linux-firmware-x1e80100-lenovo-yoga-slim7x";
+      flake = false;
+    };
   };
 
   outputs = inputs: rec {
@@ -37,10 +41,11 @@
     apps =
       let
         installerIso = nixosConfigurations.iso.config.system.build;
-        installerIsoIso = "${installerIso.isoImage}/iso/${installer.isoImage.isoName}";
+        installerIsoIso = "${installerIso.isoImage}/iso/${installerIso.isoImage.isoName}";
 
         installerImage = nixosConfigurations.image.config.system.build;
-        installerImageImage = "${installer.sdImage}/sdcard/${installer.isoImage.isoName}";
+        # installerImageImage = "${installerImage.sdImage}/sd-image/${installerImage.sdImage.imageName}";
+        installerImageImage = "${installerImage.sdImage}/sd-image/${installerImage.sdImage.imageName}";
 
         pkgs_ = import inputs.nixpkgs { system = "aarch64-linux"; };
       in
@@ -55,7 +60,8 @@
                 -cpu max \
                 -smp 4 \
                 -bios "${pkgs_.OVMF.fd}/FV/QEMU_EFI.fd" \
-                -cdrom "${installerIso}" -hda /tmp/installer-vm-vdisk1 \
+                -cdrom "${installerIsoIso}" \
+                -hda /tmp/installer-vm-vdisk1 \
                 -net user,hostfwd=tcp::10022-:22 -net nic
             '').outPath;
         };
@@ -69,7 +75,7 @@
                 -cpu max \
                 -smp 4 \
                 -bios "${pkgs_.OVMF.fd}/FV/QEMU_EFI.fd" \
-                -hd "${installerImage}" -hda /tmp/installer-vm-vdisk1 \
+                -drive file=${installerImageImage},format=raw,readonly \
                 -net user,hostfwd=tcp::10022-:22 -net nic
             '').outPath;
         };

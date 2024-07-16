@@ -2,6 +2,9 @@
 { lib, config, pkgs, modulesPath, ... }:
 
 {
+  imports = [
+    (import ./snapdragon-firmware.nix { inherit inputs };
+  ];
   config = {
     boot.kernelPackages = pkgs.linuxKernel.packagesFor (
       pkgs.callPackage ./snapdragon-kernel.nix {

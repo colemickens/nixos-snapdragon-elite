@@ -3,6 +3,7 @@
 {
   imports = [
     ./snapdragon.nix
+    (import ./snapdragon-firmware.nix { inherit inputs; })
   ];
 
   config = {

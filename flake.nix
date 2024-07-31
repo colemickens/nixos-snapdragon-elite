@@ -4,10 +4,14 @@
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs.url = "github:colemickens/nixpkgs?ref=cmpkgs";
-    linux-qcom-for-next = {
-      # url = "github:edk2-porting/linux-next?ref=work/sakuramist-x1e80100";
-      # url = "git+https://git.kernel.org/pub/scm/linux/kernel/git/qcom/linux.git?ref=for-next&shallow=1";
-      url = "git+https://git.codelinaro.org/abel.vesa/linux.git?ref=x1e80100-next&shallow=1";
+    # linux-qcom-for-next = {
+    #   # url = "github:edk2-porting/linux-next?ref=work/sakuramist-x1e80100";
+    #   # url = "git+https://git.kernel.org/pub/scm/linux/kernel/git/qcom/linux.git?ref=for-next&shallow=1";
+    #   url = "git+https://git.codelinaro.org/abel.vesa/linux.git?ref=x1e80100-next&shallow=1";
+    #   flake = false;
+    # };
+    linux = {
+      url = "github:jhovold/linux?ref=wip/x1e80100-6.11-rc1";
       flake = false;
     };
     firmware = {

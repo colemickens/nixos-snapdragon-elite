@@ -3,12 +3,13 @@
 
 {
   imports = [
-    (import ./snapdragon-firmware.nix { inherit inputs; })
+    # disable firmware to see if omitting adsp firmware allows USB to continue working
+    # (import ./snapdragon-firmware.nix { inherit inputs; })
   ];
   config = {
     boot.kernelPackages = pkgs.linuxKernel.packagesFor (
-      pkgs.callPackage ./snapdragon-kernel.nix {
-        kernel_src = inputs.linux-qcom-for-next;
+      pkgs.callPackage ./snapdragon-kernel-johan.nix {
+        kernel_src = inputs.linux;
       }
     );
 
@@ -16,6 +17,10 @@
       "clk_ignore_unused"
       "pd_ignore_unused"
       "efi=novamap"
+
+      # maybe useful for boot debug, not sure if otherwise harmful
+      "regulator_ignore_unused"
+      
       # supposedly not needed, remove:
       # "arm64.nopauth"
     ];

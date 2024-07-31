@@ -114,7 +114,7 @@ in
       "uas"
 
       # random tries:
-      "ath12k"
+      # "ath12k" # disabling to prevent mhi from getting copied/loaded potentially
       "r8152"
       "qcom_battmgr"
       "lzo_rle"
@@ -129,6 +129,10 @@ in
 
       # "another one"
       "evdev"
+
+      # trigger rebuild
+      "usb_storage"
+      "trigger-rebuild"
     ];
 
     boot.loader.grub.enable = false;

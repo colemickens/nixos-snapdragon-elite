@@ -3,7 +3,7 @@
 
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs.url = "github:colemickens/nixpkgs?ref=cmpkgs";
+    nixpkgs.url = "github:colemickens/nixpkgs?ref=cmpkgs-sdx";
     # linux-qcom-for-next = {
     #   # url = "github:edk2-porting/linux-next?ref=work/sakuramist-x1e80100";
     #   # url = "git+https://git.kernel.org/pub/scm/linux/kernel/git/qcom/linux.git?ref=for-next&shallow=1";

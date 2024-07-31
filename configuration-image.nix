@@ -132,7 +132,12 @@ in
 
       # trigger rebuild
       "usb_storage"
-      "trigger-rebuild"
+      "trigger-rebuild2"
+
+      # from: https://oftc.irclog.whitequark.org/aarch64-laptops/2024-06-28
+      "phy-qcom-snps-eusb2"
+      "phy-qcom-eusb2-repeater"
+      "phy-qcom-snps-femto-v2"
     ];
 
     boot.loader.grub.enable = false;
@@ -140,8 +145,17 @@ in
     boot.loader.systemd-boot.graceful = true;
     boot.loader.systemd-boot.installDeviceTree = true;
 
+    # boot.initrd.systemd.suppressdStorePaths = [
+    #   "${pkgs.systemd}/lib/rules.d/80-drivers.rules"
+    # ];
+
+    boot.initrd.systemd.extraBin = {
+      grep = "${pkgs.gnugrep}/bin/grep";
+    };
     ## TODO: experimental
     services.dbus.implementation = "broker";
+
+    hardware.enableRedistributableFirmware = true;
 
     # programs.sway.enable = true;
     # environment.systemPackages = with pkgs; [

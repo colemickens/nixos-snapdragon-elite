@@ -16,28 +16,35 @@
     # disable nixos's default zfs for too-new kernel
     boot.supportedFilesystems = lib.mkForce [ "btrfs" "cifs" "f2fs" "jfs" "ntfs" "reiserfs" "vfat" "xfs" ];
 
-    boot.initrd.firmware = pkgs.buildEnv {
-      name = "firmware-initrd";
-      paths = map pkgs.compressFirmwareZstd (with pkgs; [
-        # include some, but intentionally leave out the extra qcom fw
-        # TODO: HACK: more here?
-        pkgs.linux-firmware
-      ]);
-      pathsToLink = [ "/lib/firmware" ];
-      ignoreCollisions = true;
-    };
+    # NOTE: don't need to set this, apparently if we block the "_pas" module we will survive things...
+    # boot.initrd.firmware = pkgs.buildEnv {
+    #   name = "firmware-initrd";
+    #   paths = map pkgs.compressFirmwareZstd (with pkgs; [
+    #     # include some, but intentionally leave out the extra qcom fw
+    #     # TODO: HACK: more here?
+    #     pkgs.linux-firmware
+    #   ]);
+    #   pathsToLink = [ "/lib/firmware" ];
+    #   ignoreCollisions = true;
+    # };
 
     # HACK: presumably these are going away?
     boot.kernelParams = [
       "clk_ignore_unused"
       "pd_ignore_unused"
-      "efi=novamap"
+
+      # robclark confirmed not needed:
+      # "efi=novamap"
 
       # likely not needed: but test in next iteration
       "regulator_ignore_unused"
       
       # supposedly not needed, remove:
       # "arm64.nopauth"
+    ];
+
+    boot.blacklistedKernelModules = [
+      "qcom_q6v5_pas"
     ];
 
     # TODO: this is _surely_ a super set of the modules required for boot:

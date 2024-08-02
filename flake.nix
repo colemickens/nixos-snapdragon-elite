@@ -6,7 +6,9 @@
     # this nixpkgs has some hacks:
     # - this PR, which actually is good, not a hack: [insert link for device-tree pr]
     # - an abomination that rips 80-drivers.rules out of systemd to avoid some module
-    nixpkgs.url = "github:colemickens/nixpkgs?ref=cmpkgs-sdx";
+    # nixpkgs.url = "github:colemickens/nixpkgs?ref=cmpkgs-sdx";
+    # cmpkgs only has device tree hack
+    nixpkgs.url = "github:colemickens/nixpkgs?ref=cmpkgs";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     linux = {

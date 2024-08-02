@@ -25,13 +25,26 @@ in
   ];
 
   config = {
+    # make it smaller:
     documentation.enable = false;
     documentation.doc.enable = false;
     documentation.man.enable = false;
     documentation.info.enable = false;
     documentation.nixos.enable = false;
+    fonts.fontconfig.enable = lib.mkOverride 500 false;
+    environment.defaultPackages = lib.mkDefault [ ];
+    environment.stub-ld.enable = false;
+    programs.less.lessopen = lib.mkDefault null;
+    boot.enableContainers = lib.mkDefault false;
+    programs.command-not-found.enable = lib.mkDefault false;
+    services.logrotate.enable = lib.mkDefault false;
+    services.udisks2.enable = lib.mkDefault false;
+    xdg.autostart.enable = lib.mkDefault false;
+    xdg.icons.enable = lib.mkDefault false;
+    xdg.mime.enable = lib.mkDefault false;
+    xdg.sounds.enable = lib.mkDefault false;
 
-    nix.registry = lib.mkForce {};
+    nix.registry = lib.mkForce { };
 
     nixpkgs.hostPlatform = "aarch64-linux";
 

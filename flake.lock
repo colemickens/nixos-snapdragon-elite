@@ -1,0 +1,96 @@
+{
+  "nodes": {
+    "firmware": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721077782,
+        "narHash": "sha256-dhfplH0MdKupdgaxM0GOecNzw9Vp0PE+8b/KaQUP+/I=",
+        "owner": "Seraphin-",
+        "repo": "linux-firmware-x1e80100-lenovo-yoga-slim7x",
+        "rev": "2719d51f904b7312f61115c0461e59b4bbe9909d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Seraphin-",
+        "repo": "linux-firmware-x1e80100-lenovo-yoga-slim7x",
+        "type": "github"
+      }
+    },
+    "linux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722266711,
+        "narHash": "sha256-7RYZNYlDY2+ileDQAMvsrvhBgUelx4hsqGlU9uRyJrw=",
+        "owner": "jhovold",
+        "repo": "linux",
+        "rev": "e92057c615fec749fefcca4ab28ee5c425e3691b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jhovold",
+        "ref": "wip/x1e80100-6.11-rc1",
+        "repo": "linux",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1722994617,
+        "narHash": "sha256-E4csjxj57F8fmeeI0Soyjg3vuifls0OB7ikE0z0fW2M=",
+        "owner": "colemickens",
+        "repo": "nixpkgs",
+        "rev": "140c8c5c07317b322e76852f090d798f1c2f0be1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "colemickens",
+        "ref": "cmpkgs",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-mesa": {
+      "locked": {
+        "lastModified": 1723052589,
+        "narHash": "sha256-xXkv0SUeLkSAnJ4X17HXliRL30joHeqMXmmlDdpYmgs=",
+        "owner": "K900",
+        "repo": "nixpkgs",
+        "rev": "accef9478b0d04cd87ecda8a2feaa291e3ca06e8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "K900",
+        "ref": "mesa-24.2",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1722813957,
+        "narHash": "sha256-IAoYyYnED7P8zrBFMnmp7ydaJfwTnwcnqxUElC1I26Y=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "cb9a96f23c491c081b38eab96d22fa958043c9fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "firmware": "firmware",
+        "linux": "linux",
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-mesa": "nixpkgs-mesa",
+        "nixpkgs-unstable": "nixpkgs-unstable"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
